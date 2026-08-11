@@ -1,0 +1,100 @@
+# Yango Clone - Ride-Hailing & Parcel Delivery Platform (PHP + MySQL + Leaflet.js)
+ 
+A fully functional Yango-inspired urban mobility and logistics platform. Supports ride booking, express parcel delivery, real-time driver tracking on Leaflet maps, driver dispatch radar, automated fare calculation, and a built-in wallet payment system.
+ 
+---
+ 
+## 🛠️ Features Implemented
+ 
+1. **Homepage & Aesthetics**:
+   - Yango-inspired high contrast dark design system (`#121214`) with glowing neon yellow accents (`#FFCC00`).
+   - Service highlights, live fare estimator widget, and driver recruitment CTA.
+ 
+2. **User Authentication & Profiles**:
+   - Passenger & Driver signup and login system.
+   - Secure BCRYPT password hashing and PHP PDO prepared statements.
+   - Profile management with driver vehicle registration details.
+ 
+3. **Passenger Booking & Live Tracking**:
+   - Dual booking modes: **Book a Ride** (Economy, Comfort, Express) and **Send Parcel Delivery** (Package details, Weight, Recipient info).
+   - Distance & fare calculation based on pickup/dropoff GPS locations.
+   - Interactive Leaflet.js map with custom pins and route polyline.
+   - Real-time status stepper overlay (`Requested` → `Assigned` → `Arriving` → `In Transit` → `Completed`).
+   - Driver info card with vehicle description and phone contact button.
+ 
+4. **Driver Command Center & Radar**:
+   - Duty availability toggle switch (`ONLINE` / `OFFLINE`).
+   - Real-time pending requests radar feed showing incoming ride & parcel delivery jobs.
+   - Accept request functionality and step-by-step trip execution (`Mark Arrived` → `Start Trip` → `Complete Trip`).
+   - Automated earnings calculator (85% payout credited directly to driver wallet).
+ 
+5. **Wallet & Payments**:
+   - Dedicated Wallet page with live balance display.
+   - Simulated credit card / mobile money top-up gateway.
+   - Audit ledger tracking all credit (top-ups & driver earnings) and debit (ride payments) transactions.
+ 
+---
+ 
+## 🗄️ Database Credentials & Setup
+ 
+- **Database Name**: `rsoa_rsoa_rsoa324_25`
+- **Host**: `localhost`
+- **User**: `root` (or `rsoa_rsoa_rsoa324_25`)
+- **Password**: `123456`
+ 
+### Automated Installation
+To automatically create the database and seed initial test accounts:
+1. Start your local Apache & MySQL web server (e.g. XAMPP, WAMP, cPanel, or PHP built-in server).
+2. Visit **`http://localhost/YANGO%20CLONE/install.php`** in your browser.
+3. Click **"Run Automated Installation"**.
+ 
+---
+ 
+## 🔑 Pre-seeded Demo Accounts
+ 
+| Role | Email | Password | Initial Wallet |
+| :--- | :--- | :--- | :--- |
+| **Passenger** | `user@yango.com` | `123456` | $150.00 |
+| **Driver (Car)** | `driver@yango.com` | `123456` | $45.00 |
+| **Courier (Bike)**| `delivery@yango.com` | `123456` | $20.00 |
+ 
+---
+ 
+## 📂 Project Directory Structure
+ 
+```
+YANGO CLONE/
+├── config/
+│   └── db.php                  # PDO database connection & session setup
+├── api/
+│   ├── auth.php                # Signup & Login API
+│   ├── rides.php               # Ride & Parcel booking API
+│   ├── driver.php              # Driver status, dispatch radar & trip step API
+│   ├── location.php            # Driver GPS position simulation API
+│   └── wallet.php              # Wallet top-up & ledger API
+├── assets/
+│   ├── css/
+│   │   ├── main.css            # Yango core aesthetic & responsive design system
+│   │   ├── dashboard.css       # Portal panels, cards & status steppers
+│   │   └── leaflet-custom.css  # Dark map tile filter & pulse markers
+│   └── js/
+│       ├── main.js             # General UI interactivity & toast notifications
+│       ├── map.js              # Leaflet map setup & route drawing helper
+│       ├── passenger.js        # Passenger booking flow & active trip polling
+│       └── driver.js           # Driver radar feed & status update controller
+├── includes/
+│   ├── header.php              # Navbar & user dropdown header layout
+│   ├── footer.php              # Footer layout & script imports
+│   └── auth_check.php          # Session middleware
+├── db.sql                      # SQL database schema & seed script
+├── install.php                 # Web automated installer script
+├── index.php                   # Landing homepage with quick fare estimator
+├── login.php                   # Authentication login form
+├── signup.php                  # Registration form with passenger/driver selector
+├── dashboard.php               # Passenger booking hub & live tracking map
+├── driver_dashboard.php        # Driver dispatch console & radar map
+├── wallet.php                  # Wallet recharge & transaction history page
+├── profile.php                 # User profile settings page
+└── logout.php                  # Logout handler script
+```
+ 
